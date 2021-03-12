@@ -9,7 +9,7 @@ urlpatterns = [
     # *PATH CONVERTER
     # *str:string
     # *int:int
-    path("<int:month>", views.monthly_challenge_by_number),
+    path("<int:month>", views.get_monthly_challenge_by_number),
     # !order matters(int,str)....!
-    path("<str:month>", views.monthly_challenges),
+    path("<str:month>", views.get_monthly_challenge),
 ]
