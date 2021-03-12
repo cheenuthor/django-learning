@@ -20,13 +20,24 @@ monthly_challenges = {
 }
 
 
+def get_all_months(request):
+    monthList = list(monthly_challenges.keys())
+    responseData = ""
+    for month in monthList:
+        capitalised_month = month.capitalize()
+        # month_path = reverse("monthly_challenge", args=[month])
+        responseData += f'<li><a href="{month}">{ capitalised_month }</a></li>'
+    return HttpResponse(responseData)
+
+
 def get_monthly_challenge(request, month):
     # month is url that appended
     try:
         challenge_text = monthly_challenges[month]
-        return HttpResponse(challenge_text)
+        responseData = f"<h1>{challenge_text}</h1>"
+        return HttpResponse(responseData)
     except:
-        return HttpResponseNotFound("This month is not supported")
+        return HttpResponseNotFound("<h1>This month is not supported</h1>")
     # return a 404 error
 
 

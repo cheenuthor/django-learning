@@ -13,4 +13,5 @@ urlpatterns = [
     # !order matters(int,str)....!
     path("<str:month>", views.get_monthly_challenge,
          name='monthly_challenge'),
+    path("", views.get_all_months,)  # '/'
 ]
