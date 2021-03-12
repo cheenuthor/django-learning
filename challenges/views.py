@@ -34,7 +34,10 @@ def get_monthly_challenge(request, month):
     # month is url that appended
     try:
         challenge_text = monthly_challenges[month]
-        return render(request, "challenges/challenge.html")
+        return render(request, "challenges/challenge.html", {
+            "text": challenge_text,
+            "month": month
+        })
     # responseData = render_to_string("challenges/challenge.html")
     # return HttpResponse(responseData)
     except:
