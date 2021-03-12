@@ -4,6 +4,7 @@ from . import views
 
 # created url config
 urlpatterns = [
-    path("january", views.january),
-    path("february", views.february)
+    # dyanmic path segments
+    #  #<month> is should be same name as the function response name
+    path("<month>", views.monthly_challenges)
 ]
