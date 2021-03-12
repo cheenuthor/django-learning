@@ -34,8 +34,9 @@ def get_monthly_challenge(request, month):
     # month is url that appended
     try:
         challenge_text = monthly_challenges[month]
-        responseData = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(responseData)
+        return render(request, "challenges/challenge.html")
+    # responseData = render_to_string("challenges/challenge.html")
+    # return HttpResponse(responseData)
     except:
         return HttpResponseNotFound("<h1>This month is not supported</h1>")
     # return a 404 error
