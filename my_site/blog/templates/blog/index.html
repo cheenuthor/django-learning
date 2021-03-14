@@ -10,14 +10,7 @@
     {% endblock %}
 
     {%block content %}
-        <header id="main-navigation">
-            <h1>
-                <a href="">Cheenu Blog</a>
-            </h1>
-            <nav>
-                <a href="">All Posts</a>
-            </nav>
-        </header>
+        
 
         <section id="welcome">
             <header>
@@ -29,21 +22,7 @@
         <section id="latest-posts">
             <h2>My latest thoughts</h2>
             <ul>
-                <li>
-                    <article class="post">
-                        <a href="">
-                            <img src="{% static "blog/images/mountains.jpg" %}" alt="Mountain Hiking" >
-                            <div class="post__content">
-                                <h3>Mountain Hiking</h3>
-                                <p>
-                                    There's noting like the views while hiking in the
-                                    Mountain and I was'nt even prepared for what happend 
-                                    while I was enjoying the view
-                                 </p>
-                            </div>
-                        </a>
-                    </article>
-                </li>
+                {% include "blog/includes/post.html"%}
             </ul>
         </section>
 
