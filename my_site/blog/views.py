@@ -2,10 +2,10 @@ from datetime import date
 from django.shortcuts import render
 
 
-posts = [
+all_posts = [
     {
         "slug": "hike-in-the-mountains",
-        "images": "mountains.jpg",
+        "image": "woods.jpg",
         "author": "CHeeNU",
         "date": date(2020, 7, 21),
         "title": "Mountain Hiking",
@@ -20,10 +20,10 @@ posts = [
                    """
     }, {
         "slug": "hike-in-the-mountains",
-        "images": "mountains.jpg",
+        "image": "mountains.jpg",
         "author": "CHeeNU",
-        "date": date(2020, 7, 21),
-        "title": "Mountain Hiking",
+        "date": date(2020, 6, 21),
+        "title": "Mountain Diving",
         "excerpt": """There's noting like the views while hiking in the Mountain
                     and I was'nt even prepared for what happend while I was enjoying
                      the view""",
@@ -35,10 +35,10 @@ posts = [
                    """
     }, {
         "slug": "hike-in-the-mountains",
-        "images": "mountains.jpg",
+        "image": "coding.jpg",
         "author": "CHeeNU",
-        "date": date(2020, 7, 21),
-        "title": "Mountain Hiking",
+        "date": date(2020, 1, 21),
+        "title": "Mountain Walking",
         "excerpt": """There's noting like the views while hiking in the Mountain
                     and I was'nt even prepared for what happend while I was enjoying
                      the view""",
@@ -50,12 +50,19 @@ posts = [
                    """
     }
 ]
-
 # Create your views here.
 
 
+def get_date(post):
+    return post['date']
+
+
 def starting_page(request,):
-    return render(request, 'blog/index.html')
+    sorted_post = sorted(all_posts, key=get_date)
+    latest_post = sorted_post[-3:]
+    return render(request, 'blog/index.html', {
+        "posts": latest_post
+    })
 
 
 def posts(request):
