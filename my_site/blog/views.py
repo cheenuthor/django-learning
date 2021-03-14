@@ -4,15 +4,15 @@ from django.shortcuts import render
 
 all_posts = [
     {
-        "slug": "hike-in-the-mountains",
+        "slug": "nature",
         "image": "woods.jpg",
         "author": "CHeeNU",
         "date": date(2020, 7, 21),
-        "title": "Mountain Hiking",
+        "title": "Nature",
         "excerpt": """There's noting like the views while hiking in the Mountain
                     and I was'nt even prepared for what happend while I was enjoying
                      the view""",
-        "centent": """
+        "content": """
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ab iste quia reiciendis nisi accusamus omnis debitis
                     similique assumenda ex aliquam suscipit, ratione commodi
@@ -23,26 +23,26 @@ all_posts = [
         "image": "mountains.jpg",
         "author": "CHeeNU",
         "date": date(2020, 6, 21),
-        "title": "Mountain Diving",
+        "title": "Hike in the mountains",
         "excerpt": """There's noting like the views while hiking in the Mountain
                     and I was'nt even prepared for what happend while I was enjoying
                      the view""",
-        "centent": """
+        "content": """
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ab iste quia reiciendis nisi accusamus omnis debitis
                     similique assumenda ex aliquam suscipit, ratione commodi
                     sequi a cum rerum sint? Incidunt, natus!
                    """
     }, {
-        "slug": "hike-in-the-mountains",
+        "slug": "programming",
         "image": "coding.jpg",
         "author": "CHeeNU",
         "date": date(2020, 1, 21),
-        "title": "Mountain Walking",
+        "title": "Programming is Great",
         "excerpt": """There's noting like the views while hiking in the Mountain
                     and I was'nt even prepared for what happend while I was enjoying
                      the view""",
-        "centent": """
+        "content": """
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Ab iste quia reiciendis nisi accusamus omnis debitis
                     similique assumenda ex aliquam suscipit, ratione commodi
@@ -66,10 +66,13 @@ def starting_page(request,):
 
 
 def posts(request):
-    return render(request, 'blog/all-posts.html')
+    return render(request, 'blog/all-posts.html', {
+        "posts": all_posts
+    })
 
 
 def post_details(request, slug):
+    identified_post = next(post for post in all_posts if post['slug'] == slug)
     return render(request, 'blog/post-detail.html', {
-
+        "post": identified_post
     })
