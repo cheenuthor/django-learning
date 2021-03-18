@@ -12,10 +12,10 @@ def index(request):
     })
 
 
-def book_details(request, id):
+def book_details(request, slug):
 
     # * here we can use id or pk(primary key)
-    book = get_object_or_404(Book, pk=id)
+    book = get_object_or_404(Book, slug=slug)
     return render(request, 'book_outlet/book-detail.html',
                   {
                       "title": book.title,
@@ -24,4 +24,3 @@ def book_details(request, id):
                       "is_bestseller": book. is_best_selling
                   }
                   )
- 
