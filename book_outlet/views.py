@@ -20,7 +20,8 @@ def index(request):
 def book_details(request, slug):
 
     # * here we can use id or pk(primary key)
-    book = get_object_or_404(Book, slug=slug)
+    # book = get_object_or_404(Book, slug=slug)
+    book = Book.objects.get(slug=slug)
     return render(request, 'book_outlet/book-detail.html',
                   {
                       "title": book.title,

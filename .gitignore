@@ -132,3 +132,4 @@ monthly_challenges/__pycache__/settings.cpython-39.pyc
 book_store/__pycache__/urls.cpython-39.pyc
 .gitignore
 book_outlet/views.py
+book_store/__pycache__/urls.cpython-39.pyc

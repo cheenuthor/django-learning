@@ -12,8 +12,9 @@ class Book(models.Model):
     author = models.CharField(null=True, max_length=100)
     is_best_selling = models.BooleanField(default=False)
     # db_index makes performance better in querying , don't use it for all.
-    slug = models.SlugField(default="",null=False,db_index=True)
-
+    slug = models.SlugField(default="",blank=True,editable=False,null=False,db_index=True)
+    #black = True to set the value not required(ADMIN)
+    # editable = False to not display the property (ADMIN)
     def __str__(self):
         return f"{self.title} ({self.rating})"
     
