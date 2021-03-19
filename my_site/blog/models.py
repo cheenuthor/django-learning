@@ -22,5 +22,5 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, default='', null=False)
     content = models.TextField(null=False, validators=[MinLengthValidator(10)])
     author = models.ForeignKey(
-        Author, on_delete=models.SET_NULL, related_name='post')
-    tag = models.ManyToManyField(Tag, on_delete=models.SET_NULL)
+        Author, on_delete=models.SET_NULL,null=True, related_name='post')
+    tag = models.ManyToManyField(Tag,)
